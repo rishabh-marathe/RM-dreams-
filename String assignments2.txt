@@ -1,0 +1,104 @@
+ 1. 1.Write a java program to Reverse a string without using the inbuilt method.
+
+This Java program reverses a string without using the built-in reverse method.
+
+public class ReverseString {
+    public static void main(String[] args) {
+        String str = "Hello World";
+        String reversed = "";
+        
+        // Reversing the string manually
+        for (int i = str.length() - 1; i >= 0; i--) {
+            reversed += str.charAt(i);
+        }
+        
+        System.out.println("Reversed String: " + reversed);
+    }
+}
+Output:
+Reversed String: dlroW olleH
+
+2.Write a java program to know whether the given string is palindrome
+
+This program checks whether a given string is a palindrome or not. A string is a palindrome if it reads the same forward and backward.
+
+public class Palindrome {
+    public static void main(String[] args) {
+        String str = "madam";
+        String reversed = "";
+        
+        // Reversing the string manually
+        for (int i = str.length() - 1; i >= 0; i--) {
+            reversed += str.charAt(i);
+        }
+        
+        // Checking if the string is palindrome
+        if (str.equals(reversed)) {
+            System.out.println(str + " is a palindrome.");
+        } else {
+            System.out.println(str + " is not a palindrome.");
+        }
+    }
+}
+Output:
+madam is a palindrome.
+
+3.Write a java program to convert upper case to lower case and vice versa.
+This program converts uppercase characters to lowercase and vice versa.
+
+public class CaseConverter {
+    public static void main(String[] args) {
+        String str = "Hello World";
+        StringBuilder convertedStr = new StringBuilder();
+        
+        // Loop through the string and change the case of each character
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+            if (Character.isUpperCase(c)) {
+                convertedStr.append(Character.toLowerCase(c));
+            } else {
+                convertedStr.append(Character.toUpperCase(c));
+            }
+        }
+        
+        System.out.println("Converted String: " + convertedStr);
+    }
+}
+Output:
+Converted String: hELLO wORLD
+
+4.Write a java program to remove a particular character from a String.
+This program removes a particular character from a given string.
+
+public class RemoveCharacter {
+    public static void main(String[] args) {
+        String str = "Hello World";
+        char charToRemove = 'o';
+        
+        String result = str.replace(Character.toString(charToRemove), "");
+        
+        System.out.println("String after removing '" + charToRemove + "': " + result);
+    }
+}
+Output:
+String after removing 'o': Hell Wrld
+
+5.Write a java program to find the index of a substring.
+This Java program finds the index of a particular substring in a string.
+
+public class FindSubstringIndex {
+    public static void main(String[] args) {
+        String str = "Hello World";
+        String substring = "World";
+        
+        int index = str.indexOf(substring);
+        
+        if (index != -1) {
+            System.out.println("Substring '" + substring + "' found at index: " + index);
+        } else {
+            System.out.println("Substring '" + substring + "' not found.");
+        }
+    }
+}
+Output:
+Substring 'World' found at index: 6

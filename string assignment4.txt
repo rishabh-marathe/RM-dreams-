@@ -1,0 +1,131 @@
+Q1: Write a simple String program to take input from the user.
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter a string: ");
+        String userInput = scanner.nextLine();
+        
+        System.out.println("You entered: " + userInput);
+    }
+}
+Sample Output:
+Enter a string: Hello, Java!
+You entered: Hello, Java!
+
+Q2: How do you concatenate two strings in Java? Give an example.
+
+public class Main {
+    public static void main(String[] args) {
+        String str1 = "Hello, ";
+        String str2 = "World!";
+        
+        String result = str1 + str2;
+        System.out.println(result); // Output: Hello, World!
+    }
+}
+Output:
+Hello, World!
+
+Example using the concat() method:
+public class Main {
+    public static void main(String[] args) {
+        String str1 = "Hello, ";
+        String str2 = "World!";
+        
+        String result = str1.concat(str2);
+        System.out.println(result); // Output: Hello, World!
+    }
+}
+Output:
+Hello, World!
+
+Q3: How do you find the length of a string in Java? Explain with an example.
+public class Main {
+    public static void main(String[] args) {
+        String str = "Hello, World!";
+        
+        int length = str.length();
+        System.out.println("Length of the string: " + length); // Output: 13
+    }
+}
+Output:
+Length of the string: 13
+
+
+Q4: How do you compare two strings in Java? Give an Example.
+public class Main {
+    public static void main(String[] args) {
+        String str1 = "Hello";
+        String str2 = "Hello";
+        
+        if (str1.equals(str2)) {
+            System.out.println("The strings are equal.");
+        } else {
+            System.out.println("The strings are not equal.");
+        }
+    }
+}
+Output:
+The strings are equal.
+Example using `compareTo()`:
+public class Main {
+    public static void main(String[] args) {
+        String str1 = "Apple";
+        String str2 = "Banana";
+        
+        int result = str1.compareTo(str2);
+        
+        if (result < 0) {
+            System.out.println("str1 is lexicographically less than str2.");
+        } else if (result > 0) {
+            System.out.println("str1 is lexicographically greater than str2.");
+        } else {
+            System.out.println("The strings are equal.");
+        }
+    }
+}
+output:
+str1 is lexicographically less than str2.
+
+Q5: Write a program to find the length of the string "refrigerator".
+public class Main {
+    public static void main(String[] args) {
+        String str = "refrigerator";
+        
+        int length = str.length();
+        System.out.println("Length of 'refrigerator': " + length); // Output: 12
+    }
+}
+Output:
+Length of 'refrigerator': 12
+
+Q6: Write a program to check if the letter 'e' is present in the word 'Umbrella'.
+public class Main {
+    public static void main(String[] args) {
+        String str = "Umbrella";
+        
+        if (str.contains("e")) {
+            System.out.println("The letter 'e' is present in the word 'Umbrella'.");
+        } else {
+            System.out.println("The letter 'e' is not present in the word 'Umbrella'.");
+        }
+    }
+}
+Output:
+The letter 'e' is present in the word 'Umbrella'.
+
+Q7: Write a program to delete all consonants from the string "Hello, have a good day".
+public class Main {
+    public static void main(String[] args) {
+        String str = "Hello, have a good day";
+        String result = str.replaceAll("[^aeiouAEIOU\\s]", "");
+        
+        System.out.println("String after removing consonants: " + result); 
+    }
+}
+Output:
+String after removing consonants: eo, ae a o oa
