@@ -1,0 +1,123 @@
+1. Method Overloading with 3 Different Parameters
+
+In Java, method overloading allows multiple methods with the same name but different parameters. Here's an example with 3 different parameters:
+
+class OverloadExample {
+    // Method with 1 parameter
+    public void display(int a) {
+        System.out.println("Integer: " + a);
+    }
+
+    // Method with 2 parameters
+    public void display(int a, String b) {
+        System.out.println("Integer: " + a + ", String: " + b);
+    }
+
+    // Method with 3 parameters
+    public void display(int a, String b, double c) {
+        System.out.println("Integer: " + a + ", String: " + b + ", Double: " + c);
+    }
+
+    public static void main(String[] args) {
+        OverloadExample obj = new OverloadExample();
+        obj.display(10);                      // Calls method with 1 parameter
+        obj.display(10, "Hello");              // Calls method with 2 parameters
+        obj.display(10, "Hello", 3.14);       // Calls method with 3 parameters
+    }
+}
+Output:
+Integer: 10
+Integer: 10, String: Hello
+Integer: 10, String: Hello, Double: 3.14
+
+2. Create an Object of a Class and Call a Method in Main
+
+Here's an example of creating an object of a class and calling its method in the main method:
+
+class MyClass {
+    // Method in the class
+    public void greet() {
+        System.out.println("Hello, welcome to Java programming!");
+    }
+
+    public static void main(String[] args) {
+        // Creating an object of MyClass
+        MyClass obj = new MyClass();
+        
+        // Calling the greet method
+        obj.greet();
+    }
+}
+Output:
+Hello, welcome to Java programming!
+
+
+
+3. Calculate the Sum of All Elements in an Integer Array
+
+This Java program calculates the sum of all elements in an integer array:
+
+public class ArraySum {
+    public static void main(String[] args) {
+        int[] numbers = {1, 2, 3, 4, 5};
+        int sum = 0;
+        
+        // Calculating the sum of array elements
+        for (int i = 0; i < numbers.length; i++) {
+            sum += numbers[i];
+        }
+        
+        System.out.println("Sum of all elements: " + sum);
+    }
+}
+Output:
+Sum of all elements: 15
+
+4. Find the Index of a Specific Element in an Integer Array
+
+This Java program finds the index of a specific element in an integer array:
+
+public class FindIndex {
+    public static void main(String[] args) {
+        int[] numbers = {10, 20, 30, 40, 50};
+        int target = 30;  // Element to search for
+        int index = -1;    // Default value if element is not found
+        
+        // Searching for the element in the array
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] == target) {
+                index = i;
+                break;
+            }
+        }
+        
+        if (index != -1) {
+            System.out.println("Element " + target + " found at index: " + index);
+        } else {
+            System.out.println("Element " + target + " not found in the array.");
+        }
+    }
+}
+Output:
+Element 30 found at index: 2
+
+5. Print an Entire Array
+
+This Java program prints all elements of an integer array:
+
+public class PrintArray {
+    public static void main(String[] args) {
+        int[] numbers = {1, 2, 3, 4, 5};
+        
+        // Printing the array elements
+        System.out.println("Array elements:");
+        for (int num : numbers) {
+            System.out.print(num + " ");
+        }
+    }
+}
+Output:
+Array elements:
+1 2 3 4 5
+
+
