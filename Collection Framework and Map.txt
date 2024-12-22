@@ -1,0 +1,171 @@
+1. **What is the Collection Framework in Java?**
+Ans: The **Collection Framework** in Java provides a set of interfaces and classes that implement various types of collections, such as lists, sets, and maps. It is part of the `java.util` package and allows developers to store, retrieve, and manipulate groups of objects. The framework provides efficient data structures and algorithms for handling collections of data.
+
+   **Main components of the Collection Framework:**
+   - **Interfaces**: Defines the operations and behaviors (e.g., `List`, `Set`, `Queue`, `Map`).
+   - **Implementations**: Concrete classes that implement the interfaces (e.g., `ArrayList`, `HashSet`, `HashMap`).
+   - **Algorithms**: Methods that operate on collections, like sorting and searching (e.g., `Collections.sort()`).
+
+   The Collection Framework promotes consistency and reusability of data structures and provides flexibility in handling data.
+
+2. **What is the Difference Between ArrayList and LinkedList?**
+Ans: Both `ArrayList` and `LinkedList` are part of the `List` interface, but they have different underlying data structures and performance characteristics.
+
+   | Feature                 | `ArrayList`                                                   | `LinkedList`                                              |
+   |------------------------ |------------------------------------------------               |-------------------------------------------------          |
+   | **Data Structure**      | Dynamic array                                                 | Doubly linked list                                        |
+   | **Access Time**         | O(1) for random access (get/set)                              | O(n) for random access                                    |
+   | **Insertion/Deletion**  | O(n) for inserting/removing elements in the middle            | O(1) for insertion/deletion at the ends (O(n) for middle) |
+   | **Memory Usage**        | More memory-efficient due to the array-based structure        | Uses more memory for node pointers                        |
+   | **Use Case**            | Ideal for frequent access and less frequent insertion/removal | Ideal for frequent insertions and deletions               |
+
+   **Example:**
+   ```java
+   List<Integer> arrayList = new ArrayList<>();
+   arrayList.add(1);  // O(1)
+   arrayList.add(2);  // O(1)
+
+   List<Integer> linkedList = new LinkedList<>();
+   linkedList.add(1);  // O(1)
+   linkedList.add(2);  // O(1)
+
+3. **What is the Difference Between Iterator and ListIterator?**
+Ans: Both `Iterator` and `ListIterator` are used to traverse collections in Java, but they have some key differences:
+
+   | Feature                 | `Iterator`                                  | `ListIterator`                                                         |
+   |------------------------ |---------------------------------------------|------------------------------------------------------------------------|
+   | **Interface**           | `Iterator` is part of `java.util.Iterator`  | `ListIterator` is a sub-interface of `Iterator`                        |
+   | **Collection Type**     | Can traverse any type of `Collection`       | Can only traverse `List` collections (e.g., `ArrayList`, `LinkedList`) |
+   | **Methods**             | `hasNext()`, `next()`, `remove()`           | `hasNext()`, `next()`, `hasPrevious()`, `previous()`, `set()`, `add()` |
+   | **Bidirectional**       | No, it can only move forward                | Yes, it can move both forward and backward                             |
+
+   **Example**:
+   ```java
+   List<String> list = new ArrayList<>();
+   list.add("A");
+   list.add("B");
+   list.add("C");
+
+   Iterator<String> iterator = list.iterator();
+   while (iterator.hasNext()) {
+       System.out.println(iterator.next());
+   }
+
+   ListIterator<String> listIterator = list.listIterator();
+   while (listIterator.hasNext()) {
+       System.out.println(listIterator.next());
+   }
+
+### 4. **What is the Difference Between Iterator and Enumeration?**
+   Both `Iterator` and `Enumeration` are used for traversing collections, but `Iterator` is more powerful and flexible.
+
+   | Feature                 | `Iterator`                                  | `Enumeration`                                              |
+   |------------------------ |---------------------------------------------|----------------------------------------------------------  |
+   | **Methods**             | `hasNext()`, `next()`, `remove()`           | `hasMoreElements()`, `nextElement()`                       |
+   | **Modification**        | Allows element removal via `remove()`       | Does not support element removal                           |
+   | **Collection Type**     | Can traverse any collection (`List`, `Set`) | Primarily for legacy collections like `Vector` and `Stack` |
+   | **Introduced**          | Java 1.2                                    | Java 1.0                                                   |
+
+   **Example**:
+   ```java
+   Enumeration<String> enumeration = Collections.enumeration(list);
+   while (enumeration.hasMoreElements()) {
+       System.out.println(enumeration.nextElement());
+   }
+
+   Iterator<String> iterator = list.iterator();
+   while (iterator.hasNext()) {
+       System.out.println(iterator.next());
+   }
+
+5. **What is the Difference Between List and Set?**
+Ans: Both `List` and `Set` are part of the `Collection` interface, but they have different behaviors regarding element uniqueness and ordering.
+
+   | Feature                    | `List`                                         | `Set`                                                        |
+   |------------------------    |---------------------------------------------   |--------------------------------------------------------------|
+   | **Element Uniqueness**     | Allows duplicate elements                      | Does not allow duplicate elements                            |
+   | **Order**                  | Maintains insertion order                      | No guaranteed order (except `LinkedHashSet` and `TreeSet`)   |
+   | **Access Type**            | Index-based access to elements (e.g., `get()`) | Does not allow random access; traversal is done sequentially |
+   | **Common Implementations** | `ArrayList`, `LinkedList`                      | `HashSet`, `LinkedHashSet`, `TreeSet`                        |
+
+   **Example:**
+   ```java
+   List<Integer> list = new ArrayList<>();
+   list.add(1);
+   list.add(2);
+   list.add(2);  // Allowed
+   
+   Set<Integer> set = new HashSet<>();
+   set.add(1);
+   set.add(2);
+   set.add(2);  // Duplicate element will not be added
+
+6. **What is the Difference Between HashSet and TreeSet?**
+Ans: Both `HashSet` and `TreeSet` are implementations of the `Set` interface, but they have different properties.
+
+   | Feature                 | `HashSet`                                 | `TreeSet`                                                     |
+   |-----------------------  |-------------------------------------------|------------------------------------------------------------   |
+   | **Order**               | No order is maintained                    | Maintains elements in natural order or by a custom comparator |
+   | **Performance**         | O(1) for basic operations (add, remove)   | O(log n) for basic operations                                 |
+   | **Null Elements**       | Allows `null` elements                    | Does not allow `null` elements                                |
+   | **Implementation**      | Backed by a hash table                    | Backed by a red-black tree                                    |
+
+   **Example**:
+   ```java
+   Set<Integer> hashSet = new HashSet<>();
+   hashSet.add(1);
+   hashSet.add(3);
+   hashSet.add(2);
+   System.out.println(hashSet);  // Output: [1, 2, 3] (order is not guaranteed)
+
+   Set<Integer> treeSet = new TreeSet<>();
+   treeSet.add(1);
+   treeSet.add(3);
+   treeSet.add(2);
+   System.out.println(treeSet);  // Output: [1, 2, 3] (elements are sorted)
+   ```
+7. **What is the Difference Between Array and ArrayList?**
+Ans: `Array` and `ArrayList` are both used to store collections of data, but they differ in terms of flexibility and usage.
+
+   | Feature                 | `Array`                                     | `ArrayList`                                                     |
+   |------------------------ |---------------------------------------------|-------------------------------------------------------------    |
+   | **Size**                | Fixed size                                  | Dynamic size (can grow and shrink)                              |
+   | **Type**                | Stores elements of a single type            | Can store objects (not primitive types)                         |
+   | **Performance**         | Faster for accessing elements               | Slower due to resizing and dynamic array                        |
+   | **Methods**             | No built-in methods (except `length`)       | Provides built-in methods (e.g., `add()`, `remove()`, `size()`) |
+
+   **Example**:
+   ```java
+   int[] array = new int[5];
+   array[0] = 10;
+
+   ArrayList<Integer> arrayList = new ArrayList<>();
+   arrayList.add(10);
+   
+8. **What is a Map in Java?**
+Ans: A **Map** in Java is an object that maps keys to values, where each key is associated with exactly one value. It does not allow duplicate keys. Common implementations of `Map` include `HashMap`, `TreeMap`, and `LinkedHashMap`.
+
+   **Key features:**
+   - Maps store data as key-value pairs.
+   - The keys must be unique, but the values can be duplicated.
+   - A Map does not implement the `Collection` interface.
+
+   **Example**:
+   Map<String, Integer> map = new HashMap<>();
+   map.put("apple", 10);
+   map.put("banana", 20);\
+ 
+9. **Commonly Used Implementations of Map in Java**:
+Ans: **HashMap**: Stores key-value pairs, unordered, allows one `null` key, and is not synchronized.
+   - **TreeMap**: Stores key-value pairs in sorted order, does not allow `null` keys, and is backed by a red-black tree.
+   - **LinkedHashMap**: Maintains insertion order, allows one `null` key, and is similar to `HashMap` but preserves order.
+   - **Hashtable**: Synchronized, no `null` keys or values, slower compared to `HashMap`.
+
+10. **Difference Between HashMap and TreeMap**:
+Ans: **HashMap**: Unordered, faster (O(1) operations), allows `null` keys.
+   - **TreeMap**: Sorted (natural or custom order), slower (O(log n) operations), does not allow `null` keys.
+
+11. **Check if a Key Exists in a Map**:
+Ans: Use the `containsKey()` method:
+- map.containsKey("key");  // returns true if the key exists
+
