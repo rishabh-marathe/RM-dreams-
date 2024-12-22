@@ -1,0 +1,72 @@
+1. **What is Input and Output Stream in Java?**
+Ans: **InputStream**: A class used to read data from a source (like a file or network) in bytes.
+- **OutputStream**: A class used to write data to a destination (like a file or network) in bytes.
+Both are part of Java's I/O package (`java.io`) and serve as the foundation for byte-based I/O operations.
+
+2. **What are the Methods of OutputStream?**
+Ans: Key methods of the `OutputStream` class:
+   - **write(int b)**: Writes the specified byte to the output stream.
+   - **write(byte[] b)**: Writes a byte array to the output stream.
+   - **flush()**: Forces any buffered output to be written out.
+   - **close()**: Closes the stream and releases system resources.
+
+3. **What is Serialization in Java?**
+Ans: Serialization is the process of converting an object into a byte stream so that it can be easily stored in a file or transmitted over a network. It allows objects to be persisted or transferred between different environments.
+
+4. **What is the Serializable Interface in Java?**
+Ans: The `Serializable` interface marks a class as capable of being serialized. A class must implement this interface for its objects to be converted into a byte stream.
+
+   **Example**:
+
+   public class Person implements Serializable {
+       private String name;
+       private int age;
+   }
+
+5. **What is Deserialization in Java?**
+Ans: Deserialization is the process of converting a byte stream back into an object. It reverses the process of serialization, restoring the object’s state from a byte stream.
+
+6. **How is Serialization Achieved in Java?**
+Ans: Serialization is achieved by using `ObjectOutputStream` to write an object to a file or stream. The class of the object must implement the `Serializable` interface.
+
+   **Example**:
+   
+   FileOutputStream fileOut = new FileOutputStream("person.ser");
+   ObjectOutputStream out = new ObjectOutputStream(fileOut);
+   out.writeObject(person);
+   out.close();
+
+7. **How is Deserialization Achieved in Java?**
+Ans: Deserialization is achieved using `ObjectInputStream` to read the object from a byte stream or file.
+
+   **Example**:
+
+   FileInputStream fileIn = new FileInputStream("person.ser");
+   ObjectInputStream in = new ObjectInputStream(fileIn);
+   Person person = (Person) in.readObject();
+   in.close();
+
+8. **How Can You Avoid Certain Member Variables of a Class from Getting Serialized?**
+Ans: To prevent a member variable from being serialized, mark it with the `transient` keyword. This tells the Java serialization mechanism to ignore that field.
+
+   **Example**:
+ 
+   public class Person implements Serializable {
+       private String name;
+       private transient int age; // 'age' will not be serialized
+   }
+  
+9. **What Classes Are Available in the Java IO File Classes API?**
+Ans: Common classes in the Java I/O file API include:
+   - **File**: Represents a file or directory.
+   - **FileInputStream**: Reads bytes from a file.
+   - **FileOutputStream**: Writes bytes to a file.
+   - **FileReader**: Reads characters from a file.
+   - **FileWriter**: Writes characters to a file.
+   - **BufferedReader**: Reads text from a character input stream, buffering characters for efficient reading.
+
+10. **What is the Difference Between `Externalizable` and `Serializable` Interface?**
+Ans: Serializable: A marker interface that allows an object to be serialized. The default serialization process is handled by the JVM.
+   - **Externalizable**: Extends `Serializable` and allows you to control the serialization and deserialization process by implementing `writeExternal()` and `readExternal()` methods.
+
+Key Difference: `Externalizable` gives full control over serialization and deserialization, while `Serializable` relies on default mechanisms provided by the Java runtime.

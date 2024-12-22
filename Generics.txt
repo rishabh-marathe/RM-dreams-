@@ -1,0 +1,49 @@
+1. **What are Generics in Java?**
+Ans: Generics allow you to write classes, interfaces, and methods that operate on objects of various types while providing compile-time type safety. This helps eliminate the need for casting and prevents runtime errors.
+
+   **Example**: 
+   List<String> list = new ArrayList<>();
+
+2. **What are the Benefits of Using Generics in Java?**
+Ans: **Type Safety**: Ensures that only specified types are used, reducing runtime errors.
+   - **Eliminates Casting**: With generics, you don't need to cast objects when retrieving them.
+   - **Code Reusability**: You can create a single class or method that works with any object type.
+
+3. **What is a Generic Class in Java?**
+Ans: A generic class is a class that can operate on objects of any type. It is defined with type parameters and can be instantiated with specific types.
+
+   **Example**:
+
+   class Box<T> {
+       private T value;
+       public void setValue(T value) { this.value = value; }
+       public T getValue() { return value; }
+   }
+
+4. **What is a Type Parameter in Java Generics?**
+Ans: A type parameter is a placeholder for a specific type used in generics. It's defined within angle brackets (`< >`) in the class, method, or interface definition.
+
+   **Example**:
+   class Box<T> { // T is the type parameter
+       private T value;
+   }
+
+5. **What is a Generic Method in Java?**
+Ans: A generic method is a method that can accept parameters of any type, defined with a type parameter before the return type.
+
+   **Example**:
+   public <T> void printArray(T[] array) {
+       for (T element : array) {
+           System.out.println(element);
+       }
+   }
+  
+6. **What is the Difference Between `ArrayList` and `ArrayList<T>`?**
+Ans: `ArrayList`: This is the raw type of the `ArrayList` class that doesn’t specify a type parameter, which means it can hold any type of object, and type safety is not guaranteed.
+- **`ArrayList<T>`**: This is a generic version of `ArrayList`, where `T` represents a type parameter, ensuring that only objects of type `T` can be added to the list.
+
+   **Example**:
+
+   ArrayList<String> list = new ArrayList<>();  // Only String can be added
+   ArrayList rawList = new ArrayList();         // Can store any type, but unsafe
+   
