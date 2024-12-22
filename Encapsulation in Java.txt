@@ -1,0 +1,128 @@
+1. What is Encapsulation in Java? Why is it called Data Hiding?
+
+Ans: Encapsulation in Java is one of the fundamental Object-Oriented Programming (OOP) concepts, where the data (variables) of a class is hidden from other classes, and access to that data is provided through methods (getter and setter methods). This ensures that the internal representation of an object is hidden from the outside world, and only a controlled access is provided.
+Encapsulation is often referred to as Data Hiding because it restricts direct access to the object’s fields. Instead, the object's data is hidden and can only be accessed or modified through the methods provided by the class.
+
+2. What are the important features of Encapsulation?
+Ans: The important features of Encapsulation are:
+1. Data Hiding: The internal details of the object (data) are hidden from the outside world.
+2. Controlled Access: Public methods (getters and setters) are used to access and modify private data.
+3. Improved Security: By controlling how data is accessed and modified, encapsulation helps prevent unauthorized access and modification.
+4. Code Reusability and Flexibility: Encapsulation allows for better code organization, easier maintenance, and modification without affecting other parts of the program.
+
+3. What are getter and setter methods in Java? Explain with an example.
+Ans: Getter and Setter methods are used to provide controlled access to the private fields of a class.
+
+- Getter method: It allows retrieving the value of a private field.
+- Setter method: It allows setting or modifying the value of a private field.
+
+Example:
+class Person {
+    private String name;  // private field
+
+    // Getter method to access the private field
+    public String getName() {
+        return name;
+    }
+
+    // Setter method to modify the private field
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person person = new Person();
+        person.setName("John"); // Setting value using setter
+        System.out.println(person.getName()); // Getting value using getter
+    }
+}
+
+4. What is the use of 'this' keyword? Explain with an example.
+Ans: The 'this' keyword in Java refers to the current instance of a class. It is used to:
+1. Differentiate between instance variables and local variables (e.g., in constructors or setter methods).
+2. Call the current class's methods.
+3. Pass the current instance to another method or constructor.
+
+**Example:**
+class Car {
+    private String model;
+
+    // Constructor to initialize the model field
+    public Car(String model) {
+        this.model = model; // 'this' is used to refer to the instance variable
+    }
+
+    public void displayModel() {
+        System.out.println("Car model: " + this.model); // 'this' refers to the current instance
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car car = new Car("Tesla");
+        car.displayModel(); // Output: Car model: Tesla
+    }
+}
+
+
+5. What is the advantage of Encapsulation?
+Ans: Advantages of Encapsulation:
+
+1. **Data Protection**: It protects the integrity of the data by ensuring that it cannot be directly modified from outside the class.
+2. **Flexibility and Maintenance**: If the internal implementation changes, the external code does not need to change, as access to the data is controlled through methods.
+3. **Improved Code Organization**: The code is easier to maintain and modify, as the behavior and data are encapsulated within the same class.
+4. **Security**: By restricting access to the data, it can only be modified in the controlled way defined by setter methods, preventing unauthorized changes.
+
+6. How to achieve encapsulation in Java? Give an example.
+Ans: Achieving Encapsulation in Java involves the following steps:
+1. Declare the variables of a class as `private`.
+2. Provide `public` getter and setter methods to access and modify the variables.
+
+**Example:**
+class BankAccount {
+    // Step 1: Private fields
+    private String accountHolder;
+    private double balance;
+
+    // Step 2: Getter method for accountHolder
+    public String getAccountHolder() {
+        return accountHolder;
+    }
+
+    // Step 3: Setter method for accountHolder
+    public void setAccountHolder(String accountHolder) {
+        this.accountHolder = accountHolder;
+    }
+
+    // Step 4: Getter method for balance
+    public double getBalance() {
+        return balance;
+    }
+
+    // Step 5: Setter method for balance
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount; // Deposit money
+        }
+    }
+
+    public void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount; // Withdraw money
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        BankAccount account = new BankAccount();
+        account.setAccountHolder("Alice");
+        account.deposit(1000); // Deposit money
+        account.withdraw(500); // Withdraw money
+        
+        System.out.println("Account holder: " + account.getAccountHolder()); // Get account holder
+        System.out.println("Balance: " + account.getBalance()); // Get balance
+    }
+}

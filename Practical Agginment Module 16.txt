@@ -1,0 +1,159 @@
+1. Create a class that keeps track of the number of instances created. Implement a static variable and method to accomplish this.
+Ans: In this case, we'll use a static variable to keep track of the number of instances of the class. Each time an object is created, the counter will be incremented.
+
+class InstanceCounter {
+    // Static variable to keep track of the number of instances
+    static int instanceCount = 0;
+
+    // Constructor increments the instance count every time an object is created
+    public InstanceCounter() {
+        instanceCount++;
+    }
+
+    // Static method to get the instance count
+    public static void getInstanceCount() {
+        System.out.println("Number of instances created: " + instanceCount);
+    }
+
+    public static void main(String[] args) {
+        InstanceCounter obj1 = new InstanceCounter();
+        InstanceCounter obj2 = new InstanceCounter();
+        InstanceCounter obj3 = new InstanceCounter();
+        
+        // Call static method to display instance count
+        InstanceCounter.getInstanceCount();  // Output: Number of instances created: 3
+    }
+}
+Output:
+Number of instances created: 3
+
+2. Write a program and create a constructor with parameters and initialize the variable using a constructor.
+Ans: This program will demonstrate how to use a constructor with parameters to initialize variables.
+class Person {
+    String name;
+    int age;
+
+    // Constructor with parameters
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Method to display the values of variables
+    public void display() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+
+    public static void main(String[] args) {
+        // Creating an object and initializing it using the constructor
+        Person person = new Person("Alice", 25);
+        person.display();  // Output: Name: Alice, Age: 25
+    }
+}
+Output:
+Name: Alice, Age: 25
+
+3. Use a private keyword for a variable and use setter and getter methods to initialize and print the values.
+Ans: This program demonstrates the use of private fields and setter and getter methods for accessing and modifying the private variables.
+class Employee {
+    private String name;
+    private double salary;
+
+    // Setter method for name
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // Getter method for name
+    public String getName() {
+        return name;
+    }
+
+    // Setter method for salary
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    // Getter method for salary
+    public double getSalary() {
+        return salary;
+    }
+
+    public static void main(String[] args) {
+        Employee emp = new Employee();
+
+        // Using setter methods to set values
+        emp.setName("John");
+        emp.setSalary(50000);
+
+        // Using getter methods to print values
+        System.out.println("Employee Name: " + emp.getName());  // Output: Employee Name: John
+        System.out.println("Employee Salary: " + emp.getSalary());  // Output: Employee Salary: 50000.0
+    }
+}
+Output:
+Employee Name: John
+Employee Salary: 50000.0
+
+
+4. Write a program to call a method without creating an object of a class.
+Ans: This can be done by making the method static so that it can be called directly from the class without creating an instance.
+class Utility {
+    // Static method
+    public static void printMessage() {
+        System.out.println("Hello from static method!");
+    }
+
+    public static void main(String[] args) {
+        // Calling the static method without creating an object
+        Utility.printMessage();  // Output: Hello from static method!
+    }
+}
+Output:
+Hello from static method!
+
+5. Write a program which has a static block and constructor overloading, initialize variables using constructors and print it
+Ans: In this example, we will use a static block for initialization, and constructor overloading to provide multiple ways to initialize the object.
+
+class Car {
+    String model;
+    int year;
+
+    // Static block (runs once when the class is loaded)
+    static {
+        System.out.println("Static block executed");
+    }
+
+    // Constructor with one parameter
+    public Car(String model) {
+        this.model = model;
+        this.year = 2020;  // Default year
+    }
+
+    // Constructor with two parameters (constructor overloading)
+    public Car(String model, int year) {
+        this.model = model;
+        this.year = year;
+    }
+
+    // Method to display car details
+    public void display() {
+        System.out.println("Car Model: " + model + ", Year: " + year);
+    }
+
+    public static void main(String[] args) {
+        // Create car objects using different constructors
+        Car car1 = new Car("Tesla");
+        Car car2 = new Car("BMW", 2023);
+
+        // Display the details of both cars
+        car1.display();  // Output: Car Model: Tesla, Year: 2020
+        car2.display();  // Output: Car Model: BMW, Year: 2023
+    }
+}
+Output:
+Static block executed
+Car Model: Tesla, Year: 2020
+Car Model: BMW, Year: 2023
+
+
