@@ -1,0 +1,107 @@
+1. What is the Lambda Expression in Java 8+?
+Ans: A lambda expression is a concise way to represent an anonymous function (a method without a name) that can be passed around and executed. Lambda expressions are used primarily to define the behavior of methods that take functional interfaces as arguments.
+
+Syntax of a lambda expression:
+  (parameters) -> expression
+
+  Example:
+   // A lambda expression that takes two integers and returns their sum
+   (a, b) -> a + b
+
+  Full Example:
+   public class LambdaExample {
+       public static void main(String[] args) {
+           // Lambda expression for adding two numbers
+           MathOperation add = (a, b) -> a + b;
+           System.out.println("Sum: " + add.operation(5, 3));
+       }
+
+       interface MathOperation {
+           int operation(int a, int b);
+       }
+   }
+
+2. Can You Pass Lambda Expressions to a Method? When?
+Ans: Yes, you can pass lambda expressions to methods. Lambda expressions are often used when a method expects a parameter of a functional interface type. 
+This is common when working with collections or stream operations, where functional interfaces like `Consumer`, `Supplier`, `Predicate`, or `Function` are used.
+
+   Example:
+   import java.util.function.Function;
+
+   public class LambdaParameterExample {
+       // Method accepting a lambda expression as an argument
+       static void applyFunction(int x, Function<Integer, Integer> func) {
+           System.out.println(func.apply(x));
+       }
+
+       public static void main(String[] args) {
+           // Passing a lambda expression to the method
+           applyFunction(5, (n) -> n * n);  // Output: 25
+       }
+   }
+   
+3. What is the Functional Interface in Java 8?
+Ans: A functional interface in Java is an interface with exactly one abstract method, and it can have multiple default or static methods. These interfaces are used primarily to represent lambda expressions or method references.
+
+   **Common Functional Interfaces in Java**:
+   - `Runnable`: Represents a task that can be run asynchronously.
+   - `Comparator<T>`: Used for comparing objects.
+   - `Function<T, R>`: Represents a function that takes one argument of type `T` and produces a result of type `R`.
+   - `Predicate<T>`: Represents a function that takes an argument of type `T` and returns a boolean.
+   - `Consumer<T>`: Represents an operation that takes an argument of type `T` and returns nothing (void).
+   - `Supplier<T>`: Represents a supplier of results.
+
+   Example:
+   @FunctionalInterface
+   interface MyFunctionalInterface {
+       void sayHello();  // Single abstract method
+   }
+   
+   public class FunctionalInterfaceExample {
+       public static void main(String[] args) {
+           MyFunctionalInterface hello = () -> System.out.println("Hello, World!");
+           hello.sayHello();  // Output: Hello, World!
+       }
+   }
+
+4. Why Do We Use Lambda Expressions in Java?
+Ans: Lambda expressions provide several benefits in Java:
+   - **Conciseness**: They allow you to write more compact and readable code.
+   - **Functional Programming**: Lambda expressions promote functional programming paradigms in Java.
+   - **Ease of Use with APIs**: They are often used with Java's Stream API to perform operations like filtering, mapping, and reducing on collections.
+   - **Readability**: Lambda expressions improve the readability of code by removing the boilerplate code required for anonymous classes.
+   - **Improved Code Flexibility**: They allow code to be more flexible, as you can pass different behaviors (as lambda expressions) into methods.
+
+   Example of using lambda expressions with Java Stream API:
+   import java.util.Arrays;
+   import java.util.List;
+   
+   public class LambdaInStream {
+       public static void main(String[] args) {
+           List<String> names = Arrays.asList("John", "Jane", "Doe", "Alice");
+           names.forEach(name -> System.out.println(name.toUpperCase()));  // Lambda expression used in forEach
+       }
+   }
+
+5. Is it Mandatory for a Lambda Expression to Have Parameters?
+Ans: No, it is not mandatory for a lambda expression to have parameters. A lambda expression can take no parameters, one parameter, or multiple parameters, depending on the method signature it is implementing.
+
+   **Lambda with no parameters**:
+   () -> System.out.println("Hello, World!")  // No parameters
+
+   **Lambda with one parameter**:
+   x -> x * x  // Takes one parameter
+
+   **Lambda with multiple parameters**:
+   (a, b) -> a + b  // Takes two parameters
+  
+
+   Example with no parameters:
+   public class LambdaNoParams {
+       public static void main(String[] args) {
+           // Lambda expression with no parameters
+           Runnable greet = () -> System.out.println("Hello!");
+           greet.run();  // Output: Hello!
+       }
+   }
+   
