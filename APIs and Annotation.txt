@@ -1,0 +1,92 @@
+1. **Program to Display Current Date and Time in Java**
+Ans: To display the current date and time in Java, you can use `LocalDateTime` from the `java.time` package.
+
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class CurrentDateTime {
+    public static void main(String[] args) {
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        System.out.println("Current Date and Time: " + now.format(formatter));
+    }
+}
+
+2. **Program to Convert a Date to a String in the Format "MM/dd/yyyy"**
+Ans: To convert a `Date` object to a string in the format "MM/dd/yyyy", you can use `SimpleDateFormat`.
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class DateToString {
+    public static void main(String[] args) {
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+        String formattedDate = formatter.format(date);
+        System.out.println("Formatted Date: " + formattedDate);
+    }
+}
+
+3. **Difference Between Collections and Streams in Java**
+Ans: Collections:
+  - Collections are a framework that provides classes and interfaces to store and manipulate groups of objects (like `List`, `Set`, `Map`).
+  - Collections are data structures and work in an imperative programming style.
+  
+- **Streams**:
+  - Streams represent sequences of data elements that can be processed in parallel or sequentially.
+  - Streams focus on operations such as filtering, mapping, reducing, etc., and they use a more declarative programming style.
+  
+**Example**:
+
+- **Collection**:
+  
+  List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+  for (int num : numbers) {
+      System.out.println(num);
+  }
+
+- **Stream**:
+  
+  List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+  numbers.stream().forEach(System.out::println);
+  
+
+4. **What Are Enums in Java? Explain with an Example**
+Ans: An **enum** in Java is a special type used to define collections of constants (like days of the week, months, etc.). Enums can have methods and fields.
+
+**Example**:
+
+enum Day {
+    SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY
+}
+
+public class EnumExample {
+    public static void main(String[] args) {
+        Day today = Day.MONDAY;
+        System.out.println("Today is: " + today);
+    }
+}
+
+
+5. **What Are Built-In Annotations in Java?**
+Ans: Java provides several built-in annotations used for various purposes such as compiling, runtime processing, and others. Some of the common built-in annotations include:
+
+- **@Override**: Indicates that a method is overriding a method in its superclass.
+- **@Deprecated**: Marks a method or class as deprecated and suggests not using it.
+- **@SuppressWarnings**: Tells the compiler to suppress specific warnings.
+- **@FunctionalInterface**: Indicates that an interface is intended to be a functional interface, i.e., it has exactly one abstract method.
+
+**Example**:
+
+class Test {
+    @Override
+    public String toString() {
+        return "Test Object";
+    }
+
+    @Deprecated
+    public void oldMethod() {
+        System.out.println("This is an old method.");
+    }
+}
