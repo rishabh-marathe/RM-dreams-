@@ -1,0 +1,197 @@
+Q1: Number of Positive, Negative, Odd, Even Numbers, and Zeros in a 2D Array.
+ANS:
+import java.util.Scanner;
+
+public class NumberAnalysis {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Input dimensions of the matrix
+        System.out.print("Enter number of rows (m): ");
+        int m = sc.nextInt();
+        System.out.print("Enter number of columns (n): ");
+        int n = sc.nextInt();
+
+        // Input matrix elements
+        int[][] matrix = new int[m][n];
+        System.out.println("Enter the elements of the matrix:");
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                matrix[i][j] = sc.nextInt();
+            }
+        }
+
+        // Initialize counters
+        int positive = 0, negative = 0, odd = 0, even = 0, zero = 0;
+
+        // Iterate over matrix and count different categories
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                int num = matrix[i][j];
+                if (num > 0) positive++;
+                if (num < 0) negative++;
+                if (num == 0) zero++;
+                if (num % 2 == 0 && num != 0) even++;
+                if (num % 2 != 0) odd++;
+            }
+        }
+
+        // Output the results
+        System.out.println("number of positive numbers = " + positive);
+        System.out.println("number of negative numbers = " + negative);
+        System.out.println("number of odd numbers = " + odd);
+        System.out.println("number of even numbers = " + even);
+        System.out.println("number of 0 = " + zero);
+
+        sc.close();
+    }
+}
+
+Q2: Print Elements Above the Secondary Diagonal of a Square Matrix.
+ANS: The secondary diagonal of a square matrix consists of elements from the top-right to the bottom-left corner. Elements above the secondary diagonal are those with a column index smaller than the corresponding row index from the secondary diagonal.
+
+ANS: import java.util.Scanner;
+
+public class AboveSecondaryDiagonal {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Input size of matrix
+        System.out.print("Enter size of square matrix (n): ");
+        int n = sc.nextInt();
+
+        // Input matrix elements
+        int[][] matrix = new int[n][n];
+        System.out.println("Enter the elements of the matrix:");
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                matrix[i][j] = sc.nextInt();
+            }
+        }
+
+        // Print elements above the secondary diagonal
+        System.out.print("Elements above the secondary diagonal: ");
+        for (int i = 0; i < n; i++) {
+            for (int j = n - i; j < n; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+        }
+
+        sc.close();
+    }
+}
+
+Q3: Print Elements of Both the Diagonals of a Square Matrix.
+ANS: The primary diagonal is from top-left to bottom-right, and the secondary diagonal is from top-right to bottom-left.
+
+import java.util.Scanner;
+
+public class DiagonalElements {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Input size of matrix
+        System.out.print("Enter size of square matrix (n): ");
+        int n = sc.nextInt();
+
+        // Input matrix elements
+        int[][] matrix = new int[n][n];
+        System.out.println("Enter the elements of the matrix:");
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                matrix[i][j] = sc.nextInt();
+            }
+        }
+
+        // Print elements of both diagonals
+        System.out.print("Elements of both diagonals: ");
+        for (int i = 0; i < n; i++) {
+            System.out.print(matrix[i][i] + " ");  // Primary diagonal
+            System.out.print(matrix[i][n - i - 1] + " ");  // Secondary diagonal
+        }
+
+        sc.close();
+    }
+}
+
+Q4: Find the Largest Element of a Given 2D Array.
+ANS:
+import java.util.Scanner;
+
+public class LargestElementIn2DArray {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Input dimensions of the matrix
+        System.out.print("Enter number of rows (m): ");
+        int m = sc.nextInt();
+        System.out.print("Enter number of columns (n): ");
+        int n = sc.nextInt();
+
+        // Input matrix elements
+        int[][] matrix = new int[m][n];
+        System.out.println("Enter the elements of the matrix:");
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                matrix[i][j] = sc.nextInt();
+            }
+        }
+
+        // Find the largest element
+        int largest = matrix[0][0];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (matrix[i][j] > largest) {
+                    largest = matrix[i][j];
+                }
+            }
+        }
+
+        // Output the largest element
+        System.out.println("Largest element in the matrix: " + largest);
+
+        sc.close();
+    }
+}
+
+Q5: Print Middle Row and Middle Column of a 2D Square Matrix (Odd Dimensions).
+ANS:
+import java.util.Scanner;
+
+public class MiddleRowAndColumn {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Input size of matrix
+        System.out.print("Enter size of square matrix (odd dimension): ");
+        int n = sc.nextInt();
+
+        // Input matrix elements
+        int[][] matrix = new int[n][n];
+        System.out.println("Enter the elements of the matrix:");
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                matrix[i][j] = sc.nextInt();
+            }
+        }
+
+        // Middle index
+        int middle = n / 2;
+
+        // Print middle row
+        System.out.print("Middle row: ");
+        for (int i = 0; i < n; i++) {
+            System.out.print(matrix[middle][i] + " ");
+        }
+
+        // Print middle column
+        System.out.print("\nMiddle column: ");
+        for (int i = 0; i < n; i++) {
+            System.out.print(matrix[i][middle] + " ");
+        }
+
+        sc.close();
+    }
+}
+
+
