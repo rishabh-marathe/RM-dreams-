@@ -1,0 +1,174 @@
+1. What is Inheritance in Java?
+Ans: Inheritance in Java is a mechanism where a new class (subclass) acquires the properties and behaviors (fields and methods) of an existing class (superclass). It allows for reusability and method overriding, enabling a hierarchical class structure.
+
+2. What is a Superclass and Subclass?
+Ans:- Superclass: A class that is extended or inherited by another class. It contains general properties and methods that can be shared by subclasses.
+- Subclass: A class that inherits from another class. It can have additional properties and methods or override inherited methods from the superclass.
+
+   Example:
+   class Animal { // Superclass
+       void eat() {
+           System.out.println("Animal is eating");
+       }
+   }
+
+   class Dog extends Animal { // Subclass
+       void bark() {
+           System.out.println("Dog is barking");
+       }
+   }
+   
+3. How is Inheritance Implemented/Achieved in Java?
+Ans: Inheritance is achieved in Java using the `extends` keyword. A subclass can inherit from a superclass using this keyword.
+Example:
+   class Animal {
+       void sleep() {
+           System.out.println("Animal is sleeping");
+       }
+   }
+
+   class Dog extends Animal {
+       void bark() {
+           System.out.println("Dog is barking");
+       }
+   }
+
+4. What is Polymorphism?
+Ans: Polymorphism in Java allows objects of different classes to be treated as objects of a common superclass. It also allows method overriding (dynamic polymorphism) and method overloading (static polymorphism).
+Example:
+   class Animal {
+       void sound() {
+           System.out.println("Animal makes a sound");
+       }
+   }
+
+   class Dog extends Animal {
+       void sound() {
+           System.out.println("Dog barks");
+       }
+   }
+
+   public class Main {
+       public static void main(String[] args) {
+           Animal a = new Dog();
+           a.sound();  // Dynamic polymorphism: Dog's sound() is called
+       }
+   }
+
+5. Differentiate Between Method Overloading and Overriding
+Ans: Method Overloading: Occurs when multiple methods in the same class have the same name but different parameters (either in number, type, or both).
+Example:
+     class Example {
+         void display(int a) { System.out.println("Number: " + a); }
+         void display(String a) { System.out.println("String: " + a); }
+     }
+     
+- Method Overriding: Occurs when a subclass provides its specific implementation of a method that is already defined in the superclass.
+Example:
+     class Animal {
+         void sound() { System.out.println("Animal makes a sound"); }
+     }
+
+     class Dog extends Animal {
+         @Override
+         void sound() { System.out.println("Dog barks"); }
+     }
+     
+6. What is Abstraction? Explain with an Example
+Ans: Abstraction is a concept where only the essential details are exposed to the user, hiding the internal workings. In Java, abstraction is achieved using abstract classes or interfaces.
+
+Example using Abstract Class:
+ 
+   abstract class Animal {
+       abstract void sound();  // Abstract method
+   }
+
+   class Dog extends Animal {
+       void sound() {
+           System.out.println("Dog barks");
+       }
+   }
+
+   public class Main {
+       public static void main(String[] args) {
+           Animal a = new Dog();
+           a.sound();  // Dog's sound() method is called
+       }
+   }
+
+7. What is the Difference Between an Abstract Method and a Final Method in Java? Explain with an Example
+Ans: Abstract Method: A method that is declared without implementation in an abstract class. Subclasses are required to provide an implementation.
+ Final Method: A method that cannot be overridden by any subclass.
+
+   Example:
+   abstract class Animal {
+       abstract void sound();  // Abstract method
+   }
+
+   class Dog extends Animal {
+       void sound() {  // Implementation of the abstract method
+           System.out.println("Dog barks");
+       }
+
+       final void sleep() {  // Final method
+           System.out.println("Dog is sleeping");
+       }
+   }
+  
+8. What is the Final Class in Java?
+Ans: A final class is a class that cannot be subclassed. It is used to prevent inheritance. Any attempt to extend a final class will result in a compilation error.
+
+   Example:
+   final class Animal {
+       void sound() {
+           System.out.println("Animal makes a sound");
+       }
+   }
+
+   // The following line would cause a compile-time error
+   // class Dog extends Animal {}
+ 
+9. Differentiate Between Abstraction and Encapsulation
+Ans: **Abstraction**: Hiding the implementation details and showing only the necessary features of an object. It focuses on **what** an object does.
+- **Encapsulation**: Bundling the data (variables) and methods that operate on the data into a single unit (class). It focuses on **how** the data is accessed and modified.
+
+   Example of Encapsulation:
+   class Person {
+       private String name;  // Encapsulated field
+
+       public String getName() {
+           return name;
+       }
+
+       public void setName(String name) {
+           this.name = name;
+       }
+   }
+  
+10. Difference Between Runtime and Compile-Time Polymorphism
+Ans: Compile-time Polymorphism (Static Polymorphism): Achieved by method overloading or operator overloading. The method to be called is determined at compile time.
+   
+     Example of Method Overloading:
+     class Example {
+         void display(int a) { System.out.println(a); }
+         void display(String a) { System.out.println(a); }
+     }
+   
+Runtime Polymorphism (Dynamic Polymorphism): Achieved by method overriding. The method to be called is determined at runtime based on the object type.
+
+     Example of Method Overriding:
+     class Animal {
+         void sound() { System.out.println("Animal makes a sound"); }
+     }
+
+     class Dog extends Animal {
+         void sound() { System.out.println("Dog barks"); }
+     }
+
+     public class Test {
+         public static void main(String[] args) {
+             Animal a = new Dog();
+             a.sound();  // Dog's sound() is called at runtime
+         }
+     }
+     
