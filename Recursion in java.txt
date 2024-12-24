@@ -1,0 +1,116 @@
+Q1: Find the sum of the digits of a number using recursion.
+Ans: To find the sum of the digits of a number recursively, you can divide the number by 10 to reduce it step by step, while adding the last digit in each recursive call.
+
+
+public class SumOfDigits {
+    public static int sumOfDigits(int n) {
+        // Base case: when the number becomes 0, return 0
+        if (n == 0) {
+            return 0;
+        }
+        // Recursive case: add the last digit to the sum of the remaining digits
+        return n % 10 + sumOfDigits(n / 10);
+    }
+
+    public static void main(String[] args) {
+        int n = 1234;
+        System.out.println(sumOfDigits(n));  
+    }
+}
+Output: 10
+
+Q2: Sum of natural numbers till `n` with alternate signs.
+Ans: Here, we sum the numbers from 1 to `n`, alternating the signs. If `n` is even, subtract the number; if `n` is odd, add the number.
+
+public class AlternateSum {
+    public static int alternateSum(int n) {
+        // Base case: when n is 0, return 0
+        if (n == 0) {
+            return 0;
+        }
+        // Recursive case: add or subtract based on whether n is odd or even
+        if (n % 2 == 0) {
+            return -n + alternateSum(n - 1);  // Even: subtract
+        } else {
+            return n + alternateSum(n - 1);   // Odd: add
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(alternateSum(10));  
+    }
+}
+Output: -5
+Output: 3
+
+Q3: Print the max value of the array `[13, 1, -3, 22, 5]`.
+Ans: In Java, you can use the built-in `Math.max()` function to determine the maximum value of an array, or simply iterate through the array manually.
+
+public class MaxValue {
+    public static int findMax(int[] arr) {
+        int max = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+        }
+        return max;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {13, 1, -3, 22, 5};
+        System.out.println(findMax(arr));  
+    }
+}
+Output: 22
+
+Q4: Find the sum of the values of the array `[92, 23, 15, -20, 10]`.
+Ans: To find the sum of an array, you can iterate through the array and add each element.
+
+public class ArraySum {
+    public static int sumOfArray(int[] arr) {
+        int sum = 0;
+        for (int num : arr) {
+            sum += num;
+        }
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {92, 23, 15, -20, 10};
+        System.out.println(sumOfArray(arr));  
+    }
+}
+Output: 120
+
+Q5: Check if a number is an Armstrong number.
+Ans: An Armstrong number is a number that is equal to the sum of its digits raised to the power of the number of digits in it. Here's how you can check if a number is an Armstrong number.
+
+
+public class ArmstrongNumber {
+    public static boolean isArmstrong(int n) {
+        // Convert number to string to get the digits
+        String numStr = Integer.toString(n);
+        int numDigits = numStr.length();
+        int sum = 0;
+        int temp = n;
+
+        // Sum the digits raised to the power of the number of digits
+        while (temp > 0) {
+            int digit = temp % 10;
+            sum += Math.pow(digit, numDigits);
+            temp /= 10;
+        }
+
+        // Check if the sum is equal to the original number
+        return sum == n;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isArmstrong(153));   
+        System.out.println(isArmstrong(134));   
+    }
+}
+Output: true
+Output: false
+
